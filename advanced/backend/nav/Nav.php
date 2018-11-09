@@ -31,6 +31,38 @@ class Nav
                     array('title' => "权限管理", 'url' => Url::to(['user/auth/index'])),
                 )
             ),
+            array(
+                'url' => '#',
+                'title' => "比赛资料",
+                'icon' => 'fa fa-file-text-o',
+                'auth' => '',
+                'tags' => array(array('content' => 'system','class'=>'bg-teal'),),
+                'nodes' => array(
+                    array('title' => "资料管理", 'url' => Url::to(['material/material/index'])),
+                )
+            ),
+            array(
+                'url' => '#',
+                'title' => "评分管理",
+                'icon' => 'fa fa-check-square-o',
+                'auth' => '',
+                'tags' => array(array('content' => 'system','class'=>'bg-teal'),),
+                'nodes' => array(
+                    array('title' => "评分选项", 'url' => Url::to(['score/score-item/index'])),
+                    array('title' => "评分提交", 'url' => Url::to(['score/score-submit/index'])),
+                )
+            ),
+            array(
+                'url' => '#',
+                'title' => "评分排名",
+                'icon' => 'fa fa-bar-chart',
+                'auth' => '',
+                'tags' => array(array('content' => 'system','class'=>'bg-teal'),),
+                'nodes' => array(
+                    array('title' => "总分排名", 'url' => Url::to(['ranking/sum'])),
+                    array('title' => "均分排名", 'url' => Url::to(['ranking/avg'])),
+                )
+            ),
             //相关接口
             array(
                 'title' => '系统接口',
