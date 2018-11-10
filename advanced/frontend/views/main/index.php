@@ -22,9 +22,7 @@ use yii\widgets\ActiveForm;
 
 <div class="main-form">
 
-    <?php $form = ActiveForm::begin([
-        //'options' => ['class' => 'form form-horizontal'],
-    ]); ?>
+    <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'num',['template'=>'
         <div class="input-group">

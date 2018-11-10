@@ -3,6 +3,7 @@
 namespace common\models\material;
 
 use Yii;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "material".
@@ -49,5 +50,26 @@ class Material extends \yii\db\ActiveRecord
             'ppt' => 'PPT',
             'swf' => 'SWF',
         ];
+    }
+
+    /**
+     * @return string
+     */
+    public function getPdfUrl(){
+        return Url::to(['/upload/get','src'=>$this->pdf],true);
+    }
+
+    /**
+     * @return string
+     */
+    public function getPptUrl(){
+        return Url::to(['/upload/get','src'=>$this->ppt],true);
+    }
+
+    /**
+     * @return string
+     */
+    public function getSwfUrl(){
+        return Url::to(['/upload/get','src'=>$this->swf],true);
     }
 }

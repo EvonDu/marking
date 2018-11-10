@@ -1,6 +1,8 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\material\Material;
+use common\models\score\ScoreSubmit;
 use frontend\models\SelectForm;
 use Yii;
 use yii\base\InvalidParamException;
@@ -33,7 +35,7 @@ class MainController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index', 'mark'],
                     'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -74,10 +76,7 @@ class MainController extends Controller
         $model = new SelectForm();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            var_dump(Yii::$app->request->post());
-            var_dump($model->num);
-            echo 123;
-            die;
+            return $this->redirect(['mark', 'num' => $model->num]);
         }
 
         return $this->render('index', [
@@ -85,7 +84,24 @@ class MainController extends Controller
         ]);
     }
 
-    public function actionMark(){
+    /**
+     * @param $num
+     * @return string|\yii\web\Response
+     */
+    public function actionMark($num){
+        $model = new ScoreSubmit();
+        $model->num = $num;
+        $model->user_id = Yii::$app->user->identity->getId();
 
+        $material = Material::findOne(["num"=>$num]);
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index']);
+        }
+
+        return $this->render('mark', [
+            'model' => $model,
+            'material' => $material
+        ]);
     }
 }
