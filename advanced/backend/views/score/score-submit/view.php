@@ -9,7 +9,7 @@ use yii\widgets\DetailView;
 
 $this->title = $model->id;
 $this->params['small'] = 'View';
-$this->params['breadcrumbs'][] = ['label' => 'Score Submits', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '评分提交', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div id="app">

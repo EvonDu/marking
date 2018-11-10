@@ -6,11 +6,11 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\score\ScoreSubmit */
 
-$this->title = 'Update Score Submit: {nameAttribute}';
+$this->title = $model->id;
 $this->params['small'] = 'Update';
-$this->params['breadcrumbs'][] = ['label' => 'Score Submits', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '评分提交', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = '更新';
 
 vuelte\lib\Import::value($this, $model, "data");
 vuelte\lib\Import::component($this,'_form', ['model' => $model]);

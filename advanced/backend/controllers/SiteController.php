@@ -114,6 +114,7 @@ class SiteController extends Controller
      */
     public function actionHome()
     {
-        return $this->render(\vuelte\Assets::view('home'));
+        //return $this->render(\vuelte\Assets::view('home'));
+        return $this->render('home');
     }
 }

@@ -9,7 +9,7 @@ use yii\widgets\DetailView;
 
 $this->title = $model->name;
 $this->params['small'] = 'View';
-$this->params['breadcrumbs'][] = ['label' => 'Score Items', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '评分项目', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div id="app">
@@ -32,16 +32,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     "a"=>true,
                     "block"=>true,
                     "type"=>"success"
-                ])?>
-                <?= Html::tag("lte-btn","<i class='glyphicon glyphicon-remove'></i> 删除",[
-                    "href"=>Url::to(["delete", 'id' => $model->id]),
-                    "a"=>true,
-                    "block"=>true,
-                    "type"=>"danger",
-                    'data' => [
-                    'confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
-                    'method' => 'post',
-                ]
                 ])?>
                 <?= Html::tag("lte-btn","<i class='glyphicon glyphicon-share-alt'></i> 返回",[
                     "href"=>"javascript:history.go(-1)",

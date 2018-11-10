@@ -7,9 +7,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\score\ScoreItem */
 
-$this->title = 'Create Score Item';
+$this->title = '添加项目';
 $this->params['small'] = 'Create';
-$this->params['breadcrumbs'][] = ['label' => 'Score Items', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '评分项目', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 vuelte\lib\Import::value($this, $model, "data");

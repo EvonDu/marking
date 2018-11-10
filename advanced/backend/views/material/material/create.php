@@ -7,9 +7,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\material\Material */
 
-$this->title = 'Create Material';
+$this->title = '上传资料';
 $this->params['small'] = 'Create';
-$this->params['breadcrumbs'][] = ['label' => 'Materials', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '参赛资料', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 vuelte\lib\Import::value($this, $model, "data");

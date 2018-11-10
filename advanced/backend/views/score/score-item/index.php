@@ -8,7 +8,7 @@ use vuelte\widgets\GridView;
 /* @var $searchModel common\models\score\ScoreItemSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Score Items';
+$this->title = '评分项目';
 $this->params['small'] = 'List';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -47,7 +47,11 @@ $this->params['breadcrumbs'][] = $this->title;
                         'description',
                         'max',
 
-                        ['class' => 'vuelte\widgets\ActionColumn'],
+                        //['class' => 'vuelte\widgets\ActionColumn'],
+                        [
+                            'class' => 'vuelte\widgets\ActionColumn',
+                            'template' => '{view} {update}'
+                        ]
                     ],
                 ]); ?>
 

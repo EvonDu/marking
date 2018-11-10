@@ -55,8 +55,8 @@ class ScoreSubmit extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'User ID',
-            'num' => 'Num',
+            'user_id' => '评委ID',
+            'num' => '队伍编号',
             's1' => '价值贡献',
             's2' => '技术描述',
             's3' => '项目描述',
@@ -102,6 +102,21 @@ class ScoreSubmit extends \yii\db\ActiveRecord
     static public function rankAvg(){
         //拼接语句
         $sql = "SELECT num,AVG(s1+s2+s3+s4+s5+s6+s7+s8+s9+s10) as avg";
+        $sql .= " FROM ".self::tableName();
+        $sql .= " group by num";
+        $sql .= " order by avg desc";
+
+        //返回结果
+        $command = Yii::$app->db->createCommand($sql);
+        $list = $command->queryAll();
+        return $list;
+    }
+
+    static public function rankDescription(){
+        //拼接语句
+        $sql = "SELECT num,AVG(s1+s2+s3+s4+s5+s6+s7+s8+s9+s10) as avg";
+        for($i=1;$i<=10;$i++)
+            $sql .= ",AVG(s$i) as s$i";
         $sql .= " FROM ".self::tableName();
         $sql .= " group by num";
         $sql .= " order by avg desc";

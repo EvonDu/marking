@@ -8,7 +8,7 @@ use vuelte\widgets\GridView;
 /* @var $searchModel common\models\score\ScoreSubmitSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Score Submits';
+$this->title = '评分提交';
 $this->params['small'] = 'List';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -44,6 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         'id',
                         'user_id',
+                        //'user.username',
                         'num',
                         's1',
                         's2',

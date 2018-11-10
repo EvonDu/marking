@@ -29,4 +29,11 @@ class RankingController extends Controller
             'list'=>$list
         ]);
     }
+
+    public function actionDescription(){
+        $list = ScoreSubmit::rankDescription();
+        return $this->render('description',[
+            'list'=>$list
+        ]);
+    }
 }

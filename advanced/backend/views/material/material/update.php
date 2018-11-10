@@ -6,11 +6,11 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\material\Material */
 
-$this->title = 'Update Material: {nameAttribute}';
+$this->title = $model->name;
 $this->params['small'] = 'Update';
-$this->params['breadcrumbs'][] = ['label' => 'Materials', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '参赛资料', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = '更新';
 
 vuelte\lib\Import::value($this, $model, "data");
 vuelte\lib\Import::component($this,'_form', ['model' => $model]);
