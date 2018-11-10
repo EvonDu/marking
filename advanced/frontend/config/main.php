@@ -7,6 +7,9 @@ $params = array_merge(
 );
 
 return [
+    'defaultRoute'=>'main',
+    'layout' => 'lte',
+
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],

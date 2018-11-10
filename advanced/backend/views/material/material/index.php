@@ -8,7 +8,7 @@ use vuelte\widgets\GridView;
 /* @var $searchModel common\models\material\MaterialSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Materials';
+$this->title = '参赛资料';
 $this->params['small'] = 'List';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
 
-                        'id',
+                        //'id',
                         'num',
                         'name',
                         'pdf',

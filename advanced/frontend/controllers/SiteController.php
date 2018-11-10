@@ -19,6 +19,11 @@ use frontend\models\ContactForm;
 class SiteController extends Controller
 {
     /**
+     * @var bool
+     */
+    public $enableCsrfValidation = false;
+
+    /**
      * {@inheritdoc}
      */
     public function behaviors()
@@ -92,9 +97,7 @@ class SiteController extends Controller
         } else {
             $model->password = '';
 
-            return $this->render('login', [
-                'model' => $model,
-            ]);
+            return $this->render(\vuelte\Assets::view('login'), [ 'model' => $model ]);
         }
     }
 
