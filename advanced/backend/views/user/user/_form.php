@@ -15,10 +15,10 @@ use vuelte\widgets\ActiveElementForm;
             "status-icon" => true,
         ]]); ?>
 
-        <el-form-item prop="status"
-                      label="<?= ActiveElementForm::getFieldLabel($model,"status")?>"
-                      error="<?= ActiveElementForm::getFieldError($model,"status")?>">
-            <el-input v-model="data.status"></el-input>
+        <el-form-item prop="fund"
+                      label="<?= ActiveElementForm::getFieldLabel($model,"fund")?>"
+                      error="<?= ActiveElementForm::getFieldError($model,"fund")?>">
+            <el-input v-model="data.fund"></el-input>
         </el-form-item>
 
         <el-form-item>
@@ -38,7 +38,7 @@ use vuelte\widgets\ActiveElementForm;
         },
         methods: {
             submit: function (event) {
-                YiiFormSubmit(this.data, "Admin");
+                YiiFormSubmit(this.data, "User");
             }
         }
     });

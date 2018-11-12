@@ -8,7 +8,7 @@ use vuelte\widgets\GridView;
 /* @var $searchModel common\models\score\ScoreSubmitSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = '评分提交';
+$this->title = '评分记录';
 $this->params['small'] = 'List';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -42,12 +42,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
 
-                        'id',
+                        'user.username',
                         'user_id',
-                        //'user.username',
                         'num',
-                        's1',
-                        's2',
+                        'fund',
+                        //'s1',
+                        //'s2',
                         //'s3',
                         //'s4',
                         //'s5',

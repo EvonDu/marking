@@ -18,7 +18,7 @@ class ScoreSubmitSearch extends ScoreSubmit
     public function rules()
     {
         return [
-            [['id', 'user_id', 's1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10'], 'integer'],
+            [['id', 'user_id', 'fund', 's1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10'], 'integer'],
             [['num'], 'safe'],
         ];
     }
@@ -61,6 +61,7 @@ class ScoreSubmitSearch extends ScoreSubmit
         $query->andFilterWhere([
             'id' => $this->id,
             'user_id' => $this->user_id,
+            'fund' => $this->fund,
             's1' => $this->s1,
             's2' => $this->s2,
             's3' => $this->s3,

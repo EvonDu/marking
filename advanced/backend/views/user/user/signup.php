@@ -46,6 +46,8 @@ vuelte\lib\Import::value($this, $model, "data");
 
                 <?= $form->field($model, 'password')->el_input(['v-model' => 'data.password', 'type' => 'password']) ?>
 
+                <?= $form->field($model, 'fund')->el_input(['v-model' => 'data.fund', 'type' => 'input']) ?>
+
                 <el-form-item>
                     <?= Html::tag("lte-btn","<i class='glyphicon glyphicon-floppy-disk'></i> 注册",["type" => "info", "@click" => "submit"]) ?>
                 </el-form-item>

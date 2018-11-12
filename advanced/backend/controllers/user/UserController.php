@@ -118,6 +118,7 @@ class UserController extends Controller
      */
     public function actionSignup(){
         $model = new SignupForm();
+        $model->fund = 1000;
 
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
             return $this->redirect(['index']);

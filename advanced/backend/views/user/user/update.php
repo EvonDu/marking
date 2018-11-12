@@ -15,6 +15,7 @@ $this->params['breadcrumbs'][] = 'Update';
 vuelte\lib\Import::value($this, $model, "data");
 vuelte\lib\Import::component($this, '_form', ['model' => $model]);
 ?>
+
 <div id="app">
     <lte-row>
         <lte-col col="3">

@@ -5,9 +5,9 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\admin\Admin */
+/* @var $model common\models\user\User */
 
-$this->title = $model->info->nickname;
+$this->title = $model->infoModel->nickname;
 $this->params['small'] = 'View';
 $this->params['breadcrumbs'][] = ['label' => '用户管理', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     "type"=>"info"
                 ])?>
                 <?= Html::tag("lte-btn","<i class='glyphicon glyphicon-edit'></i> 修改",[
-                    "href"=>Url::to(["info", 'id' => $model->id]),
+                    "href"=>Url::to(["update", 'id' => $model->id]),
                     "a"=>true,
                     "block"=>true,
                     "type"=>"success"
@@ -72,6 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         //'password_hash',
                         //'password_reset_token',
                         'email:email',
+                        'fund',
                         'status',
                         'created_at:datetime',
                         'updated_at:datetime',

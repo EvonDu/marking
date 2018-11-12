@@ -11,6 +11,7 @@ class SignupForm extends Model
     public $username;
     public $email;
     public $password;
+    public $fund;
 
 
     /**
@@ -32,6 +33,7 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+            ['fund', 'integer'],
         ];
     }
 
@@ -49,6 +51,7 @@ class SignupForm extends Model
         $user = new User();
         $user->username = $this->username;
         $user->email = $this->email;
+        $user->fund = $this->fund;
         $user->setPassword($this->password);
         $user->generateAuthKey();
 
@@ -65,6 +68,7 @@ class SignupForm extends Model
             'username' => '用户名',
             'email' => '邮箱',
             'password' => '密码',
+            'fund' => '资金',
         ];
     }
 }
