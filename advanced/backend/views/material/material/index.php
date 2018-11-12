@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         //'id',
                         'num',
-                        'name',
+                        //'name',
                         'pdf',
                         'ppt',
                         //'swf',

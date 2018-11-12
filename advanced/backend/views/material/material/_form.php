@@ -23,11 +23,11 @@ vuelte\lib\Import::component($this,'@app/views/components/upload-file');
             <el-input v-model="data.num"></el-input>
         </el-form-item> 
 
-        <el-form-item prop="name"
-                      label="<?= ActiveElementForm::getFieldLabel($model,"name")?>"
-                      error="<?= ActiveElementForm::getFieldError($model,"name")?>">
+        <!--<el-form-item prop="name"
+                      label="<?/*= ActiveElementForm::getFieldLabel($model,"name")*/?>"
+                      error="<?/*= ActiveElementForm::getFieldError($model,"name")*/?>">
             <el-input v-model="data.name"></el-input>
-        </el-form-item> 
+        </el-form-item> -->
 
         <el-form-item prop="pdf"
                       label="<?= ActiveElementForm::getFieldLabel($model,"pdf")?>"

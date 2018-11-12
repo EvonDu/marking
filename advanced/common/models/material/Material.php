@@ -44,8 +44,8 @@ class Material extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'num' => '编号',
-            'name' => '名称',
+            'num' => '队伍编号',
+            'name' => '队伍名称',
             'pdf' => 'PDF',
             'ppt' => 'PPT',
             'swf' => 'SWF',

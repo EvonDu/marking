@@ -81,6 +81,22 @@ class ScoreSubmit extends \yii\db\ActiveRecord
     }
 
     /**
+     * 提交保存记录
+     * @param $user_id
+     * @return bool
+     */
+    public function submit($user_id){
+        //扣除用户资金
+        $user = User::findOne($user_id);
+        $this->fund = ($user->fund >= $this->fund) ? $this->fund : $user->fund;
+        $user->fund = $user->fund - $this->fund;
+        $user->save();
+
+        //保存记录
+        return $this->save();
+    }
+
+    /**
      * 合计得分排名
      * @return array
      */
@@ -114,6 +130,10 @@ class ScoreSubmit extends \yii\db\ActiveRecord
         return $list;
     }
 
+    /**
+     * 综合得分排名
+     * @return array
+     */
     static public function rankDescription(){
         //拼接语句
         $sql = "SELECT num,AVG(s1+s2+s3+s4+s5+s6+s7+s8+s9+s10) as avg";
@@ -126,6 +146,33 @@ class ScoreSubmit extends \yii\db\ActiveRecord
         //返回结果
         $command = Yii::$app->db->createCommand($sql);
         $list = $command->queryAll();
+        return $list;
+    }
+
+    /**
+     * 综合得分排名
+     * @return array
+     */
+    static public function rankFund(){
+        //拼接语句
+        $sql = "SELECT num,SUM(fund) as sum";
+        $sql .= " FROM ".self::tableName();
+        $sql .= " group by num";
+        $sql .= " order by sum desc";
+
+        //返回结果
+        $command = Yii::$app->db->createCommand($sql);
+        $list = $command->queryAll();
+        return $list;
+    }
+
+    /**
+     * 获取已经评分列表
+     * @param $user_id
+     * @return static[]
+     */
+    static public function getSubmitList($user_id){
+        $list = self::findAll(["user_id" => $user_id]);
         return $list;
     }
 }

@@ -36,4 +36,11 @@ class RankingController extends Controller
             'list'=>$list
         ]);
     }
+
+    public function actionFund(){
+        $list = ScoreSubmit::rankFund();
+        return $this->render('fund',[
+            'list'=>$list
+        ]);
+    }
 }

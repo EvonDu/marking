@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2018-11-09 13:05:43
+-- Generation Time: 2018-11-12 18:48:57
 -- 服务器版本： 5.7.14
 -- PHP Version: 7.0.10
 
@@ -126,6 +126,14 @@ CREATE TABLE `material` (
   `swf` varchar(512) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- 转存表中的数据 `material`
+--
+
+INSERT INTO `material` (`id`, `num`, `name`, `pdf`, `ppt`, `swf`) VALUES
+(1, '123', '测试队伍1', '20181111/5be714c8497e5.pdf', NULL, NULL),
+(2, '队伍2', NULL, NULL, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -161,6 +169,54 @@ CREATE TABLE `score_item` (
   `max` int(11) DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+--
+-- 转存表中的数据 `score_item`
+--
+
+INSERT INTO `score_item` (`id`, `name`, `description`, `max`) VALUES
+(1, '价值贡献', '对公司主营业务的是否有贡献价值，或对公司数字化转型能够提供支持', 10),
+(2, '技术描述', '技术是否成熟、新颖，描述是否条理清晰， “数字化”技术应用情况', 10),
+(3, '项目描述', '准确定义所提供的产品、技术、概念产品， 针对解决的问题，如何满足市场需求 ，项目所具有的独创性、领先型。', 10),
+(4, '方案可行性', '业务主旨、资金筹备方案合理性、管理背景和能力 产品、服务、技术含量和创新型', 15),
+(5, '行业规模', '描述行业的整体发展情况、细分市场情况 、市场动态以及客户规模。', 10),
+(6, '市场机会', '详细的市场调查，分析面对的市场状况、发展趋势、 竞争状况、市场定位。清晰的产业和市场竞争环境， 市场机会和有效的市场需求', 10),
+(7, '营销策略', '根据项目的特点，制定合适的市场营销策略， 包括营销渠道，促销方式，产品的生产、 服务计划，经营难度，资源需求', 10),
+(8, '协同能力', '充分展示出内外部协同能力，资源整合能力和创业团队的能力建设与提升', 8),
+(9, 'PPT制作及演讲形式', 'PPT制作结构严谨、构思巧妙、一目了然， 能够达到更有效的沟通；演讲形式新颖，产品展示生动形象', 8),
+(10, '现场展示', '演讲者预言规范、语速恰当、表达清楚、流畅 ，具有较强的感染力。营造良好的演讲效果 演讲时间控释在9分钟之内', 9);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `score_submit`
+--
+
+CREATE TABLE `score_submit` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `num` varchar(50) NOT NULL,
+  `fund` int(11) DEFAULT '0',
+  `s1` int(11) DEFAULT '0',
+  `s2` int(11) DEFAULT '0',
+  `s3` int(11) DEFAULT '0',
+  `s4` int(11) DEFAULT '0',
+  `s5` int(11) DEFAULT '0',
+  `s6` int(11) DEFAULT '0',
+  `s7` int(11) DEFAULT '0',
+  `s8` int(11) DEFAULT '0',
+  `s9` int(11) DEFAULT '0',
+  `s10` int(11) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `score_submit`
+--
+
+INSERT INTO `score_submit` (`id`, `user_id`, `num`, `fund`, `s1`, `s2`, `s3`, `s4`, `s5`, `s6`, `s7`, `s8`, `s9`, `s10`) VALUES
+(12, 2, '123', 21, 10, 10, 10, 15, 10, 10, 10, 8, 8, 9),
+(13, 2, '队伍2', 49, 10, 10, 10, 15, 10, 10, 10, 8, 8, 9),
+(14, 3, '123', 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -176,15 +232,18 @@ CREATE TABLE `user` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `status` smallint(6) NOT NULL DEFAULT '10',
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL
+  `updated_at` int(11) NOT NULL,
+  `fund` int(11) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- 转存表中的数据 `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'user', 'J116BH1pO5kGB7Vl596zgs3gnxxVnRDc', '$2y$13$kXqATUSyFpW6l71L.u57MeKZEuEInyRdK1aOuuYkpOc77a.pAkYfy', NULL, 'user@yii.com', 10, 1541681567, 1541681567);
+INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`, `fund`) VALUES
+(1, 'user', 'J116BH1pO5kGB7Vl596zgs3gnxxVnRDc', '$2y$13$kXqATUSyFpW6l71L.u57MeKZEuEInyRdK1aOuuYkpOc77a.pAkYfy', NULL, 'user@test.com', 10, 1541681567, 1542038783, 10000),
+(2, 'user2', '7kJdxq5aTdU7vMB3pB5ioHv3Q80oBzIv', '$2y$13$FqzYaiHm9CdyclV/9Rnmp.MU1p6MlZ0ByFGaWgK4AzdQnl0w2/FJW', NULL, 'user2@test.com', 10, 1541869848, 1542047336, 9825),
+(3, 'test3', 'ouqHdnJTaLMvxsYpcLkwJSdups1XrS-i', '$2y$13$RKJxHpyjiN8i3QtF71RhF.Fr.qzquym9P/AY0O5a67cfybSIr2OFO', NULL, 'test@test.com', 10, 1542040630, 1542040630, 1000);
 
 -- --------------------------------------------------------
 
@@ -266,6 +325,13 @@ ALTER TABLE `score_item`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `score_submit`
+--
+ALTER TABLE `score_submit`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user_id_num` (`user_id`,`num`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -299,17 +365,22 @@ ALTER TABLE `admin_info`
 -- 使用表AUTO_INCREMENT `material`
 --
 ALTER TABLE `material`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- 使用表AUTO_INCREMENT `score_item`
 --
 ALTER TABLE `score_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- 使用表AUTO_INCREMENT `score_submit`
+--
+ALTER TABLE `score_submit`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- 使用表AUTO_INCREMENT `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- 使用表AUTO_INCREMENT `user_info`
 --
@@ -343,6 +414,12 @@ ALTER TABLE `auth_item`
 ALTER TABLE `auth_item_child`
   ADD CONSTRAINT `auth_item_child_ibfk_1` FOREIGN KEY (`parent`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- 限制表 `score_submit`
+--
+ALTER TABLE `score_submit`
+  ADD CONSTRAINT `FK_score_submit_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 限制表 `user_info`

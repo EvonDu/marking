@@ -59,6 +59,7 @@ class Nav
                     array('title' => "总分排名", 'url' => Url::to(['ranking/sum'])),
                     array('title' => "均分排名", 'url' => Url::to(['ranking/avg'])),
                     array('title' => "得分详情排名", 'url' => Url::to(['ranking/description'])),
+                    array('title' => "投资排名", 'url' => Url::to(['ranking/fund'])),
                 )
             ),
         );
