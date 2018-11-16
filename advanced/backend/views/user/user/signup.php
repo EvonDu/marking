@@ -48,6 +48,20 @@ vuelte\lib\Import::value($this, $model, "data");
 
                 <?= $form->field($model, 'fund')->el_input(['v-model' => 'data.fund', 'type' => 'input']) ?>
 
+                <el-form-item prop="role"
+                              label="<?= ActiveElementForm::getFieldLabel($model,"role")?>"
+                              error="<?= ActiveElementForm::getFieldError($model,"role")?>">
+                    <el-select v-model="data.role" placeholder="请选择">
+                        <?php foreach (\common\models\auth\AuthItem::getRoleList() as $role):?>
+                            <el-option
+                                    key="<?=$role->name?>"
+                                    label="<?=$role->description?>"
+                                    value="<?=$role->name?>">
+                            </el-option>
+                        <?php endforeach;?>
+                    </el-select>
+                </el-form-item>
+
                 <el-form-item>
                     <?= Html::tag("lte-btn","<i class='glyphicon glyphicon-floppy-disk'></i> 注册",["type" => "info", "@click" => "submit"]) ?>
                 </el-form-item>

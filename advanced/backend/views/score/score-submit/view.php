@@ -60,7 +60,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         'id',
                         'user_id',
                         'num',
-                        'fund',
                         's1',
                         's2',
                         's3',

@@ -27,12 +27,6 @@ use vuelte\widgets\ActiveElementForm;
             <el-input v-model="data.num"></el-input>
         </el-form-item>
 
-        <el-form-item prop="fund"
-                      label="<?= ActiveElementForm::getFieldLabel($model,"fund")?>"
-                      error="<?= ActiveElementForm::getFieldError($model,"fund")?>">
-            <el-input v-model="data.fund"></el-input>
-        </el-form-item>
-
         <el-form-item prop="s1"
                       label="<?= ActiveElementForm::getFieldLabel($model,"s1")?>"
                       error="<?= ActiveElementForm::getFieldError($model,"s1")?>">

@@ -11,7 +11,6 @@ use common\models\user\User;
  * @property int $id
  * @property int $user_id
  * @property string $num
- * @property int $fund
  * @property int $s1
  * @property int $s2
  * @property int $s3
@@ -42,7 +41,7 @@ class ScoreSubmit extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'num'], 'required'],
-            [['user_id', 'fund', 's1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10'], 'integer'],
+            [['user_id', 's1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10'], 'integer'],
             [['num'], 'string', 'max' => 50],
             [['user_id', 'num'], 'unique', 'targetAttribute' => ['user_id', 'num']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
@@ -58,7 +57,6 @@ class ScoreSubmit extends \yii\db\ActiveRecord
             'id' => 'ID',
             'user_id' => '评委ID',
             'num' => '队伍编号',
-            'fund' => '投资资金',
             's1' => '价值贡献',
             's2' => '技术描述',
             's3' => '项目描述',
@@ -78,22 +76,6 @@ class ScoreSubmit extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
-    }
-
-    /**
-     * 提交保存记录
-     * @param $user_id
-     * @return bool
-     */
-    public function submit($user_id){
-        //扣除用户资金
-        $user = User::findOne($user_id);
-        $this->fund = ($user->fund >= $this->fund) ? $this->fund : $user->fund;
-        $user->fund = $user->fund - $this->fund;
-        $user->save();
-
-        //保存记录
-        return $this->save();
     }
 
     /**
@@ -142,23 +124,6 @@ class ScoreSubmit extends \yii\db\ActiveRecord
         $sql .= " FROM ".self::tableName();
         $sql .= " group by num";
         $sql .= " order by avg desc";
-
-        //返回结果
-        $command = Yii::$app->db->createCommand($sql);
-        $list = $command->queryAll();
-        return $list;
-    }
-
-    /**
-     * 综合得分排名
-     * @return array
-     */
-    static public function rankFund(){
-        //拼接语句
-        $sql = "SELECT num,SUM(fund) as sum";
-        $sql .= " FROM ".self::tableName();
-        $sql .= " group by num";
-        $sql .= " order by sum desc";
 
         //返回结果
         $command = Yii::$app->db->createCommand($sql);

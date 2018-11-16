@@ -1,6 +1,8 @@
 <?php
 namespace common\models\user;
 
+use common\models\auth\AuthAssignment;
+use Yii;
 use yii\base\Model;
 
 /**
@@ -12,6 +14,7 @@ class SignupForm extends Model
     public $email;
     public $password;
     public $fund;
+    public $role;
 
 
     /**
@@ -33,7 +36,9 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
-            ['fund', 'integer'],
+            ['fund', 'number'],
+
+            ['role', 'required'],
         ];
     }
 
@@ -48,14 +53,27 @@ class SignupForm extends Model
             return null;
         }
 
+        //保存用户
         $user = new User();
         $user->username = $this->username;
         $user->email = $this->email;
         $user->fund = $this->fund;
         $user->setPassword($this->password);
         $user->generateAuthKey();
+        if(!$user->save())
+            return null;
 
-        return $user->save() ? $user : null;
+        //添加角色
+        if($this->role){
+            $auth = new AuthAssignment();
+            $auth->user_id = "$user->id";
+            $auth->item_name = $this->role;
+            $auth->created_at = time();
+            $auth->save();
+        }
+
+        //返回
+        return $user;
     }
 
     /**
@@ -69,6 +87,7 @@ class SignupForm extends Model
             'email' => '邮箱',
             'password' => '密码',
             'fund' => '资金',
+            'role' => '角色',
         ];
     }
 }

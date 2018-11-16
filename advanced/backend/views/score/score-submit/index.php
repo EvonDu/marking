@@ -45,7 +45,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         'user.username',
                         'user_id',
                         'num',
-                        'fund',
                         's1',
                         's2',
                         's3',

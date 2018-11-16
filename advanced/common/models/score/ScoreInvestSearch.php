@@ -5,12 +5,12 @@ namespace common\models\score;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\score\ScoreSubmit;
+use common\models\score\ScoreInvest;
 
 /**
- * ScoreSubmitSearch represents the model behind the search form of `common\models\score\ScoreSubmit`.
+ * ScoreInvestSearch represents the model behind the search form of `common\models\score\ScoreInvest`.
  */
-class ScoreSubmitSearch extends ScoreSubmit
+class ScoreInvestSearch extends ScoreInvest
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class ScoreSubmitSearch extends ScoreSubmit
     public function rules()
     {
         return [
-            [['id', 'user_id', 's1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10'], 'integer'],
-            [['num'], 'safe'],
+            [['id', 'user_id'], 'integer'],
+            [['fund'], 'number'],
         ];
     }
 
@@ -41,7 +41,7 @@ class ScoreSubmitSearch extends ScoreSubmit
      */
     public function search($params)
     {
-        $query = ScoreSubmit::find();
+        $query = ScoreInvest::find();
 
         // add conditions that should always apply here
 
@@ -61,19 +61,8 @@ class ScoreSubmitSearch extends ScoreSubmit
         $query->andFilterWhere([
             'id' => $this->id,
             'user_id' => $this->user_id,
-            's1' => $this->s1,
-            's2' => $this->s2,
-            's3' => $this->s3,
-            's4' => $this->s4,
-            's5' => $this->s5,
-            's6' => $this->s6,
-            's7' => $this->s7,
-            's8' => $this->s8,
-            's9' => $this->s9,
-            's10' => $this->s10,
+            'fund' => $this->fund,
         ]);
-
-        $query->andFilterWhere(['like', 'num', $this->num]);
 
         return $dataProvider;
     }

@@ -48,6 +48,7 @@ class Nav
                 'nodes' => array(
                     array('title' => "评分项目", 'url' => Url::to(['score/score-item/index'])),
                     array('title' => "评分记录", 'url' => Url::to(['score/score-submit/index'])),
+                    array('title' => "投资记录", 'url' => Url::to(['score/score-invest/index'])),
                 )
             ),
             array(
