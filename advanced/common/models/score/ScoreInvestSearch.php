@@ -20,6 +20,7 @@ class ScoreInvestSearch extends ScoreInvest
         return [
             [['id', 'user_id'], 'integer'],
             [['fund'], 'number'],
+            [['num'], 'string'],
         ];
     }
 

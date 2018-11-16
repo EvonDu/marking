@@ -37,6 +37,11 @@ class SelectForm extends Model
         ];
     }
 
+    /**
+     * @param $attribute
+     * @param $params
+     * @return bool|void
+     */
     public function ruleAccess($attribute, $params)
     {
         //查看队伍是否有效

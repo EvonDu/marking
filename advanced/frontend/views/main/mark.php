@@ -19,6 +19,9 @@ vuelte\lib\Import::value($this, $model, "data");
         text-align: center;
         vertical-align: middle;
     }
+    .material{
+        font-size: 24px;
+    }
 </style>
 
 <div class="main-content">
@@ -27,58 +30,57 @@ vuelte\lib\Import::value($this, $model, "data");
             "status-icon" => true,
         ]]); ?>
 
+        <div class="material">序号：<?=$material->id?>&nbsp;&nbsp;&nbsp;&nbsp;队伍：<?=$material->num?></div>
         <table class="table table-bordered">
             <thead>
                 <tr><td>指标</td><td>详细指标</td><td>详细描述</td><td>分值</td><td>评分</td></tr>
             </thead>
             <tbody>
-                <tr>
-                    <td rowspan="4">方案描述及可行性（45分）</td>
-                    <td>价值贡献</td>
-                    <td>对公司主营业务的是否有贡献价值，或对公司数字化转型能够提供支持</td>
-                    <td>10</td>
-                    <td>
-                        <el-form-item prop="s1"
-                                      error="<?= ActiveElementForm::getFieldError($model,"s1")?>">
-                            <el-input-number v-model="data.s1" :min="1" :max="10"></el-input-number>
-                        </el-form-item>
-                    </td>
-                </tr>
-                <tr>
-                    <td>技术描述</td>
-                    <td>技术是否成熟、新颖，描述是否条理清晰，“数字化”技术应用情况</td>
-                    <td>10</td>
-                    <td>
-                        <el-form-item prop="s2"
-                                      error="<?= ActiveElementForm::getFieldError($model,"s2")?>">
-                            <el-input-number v-model="data.s2" :min="1" :max="10"></el-input-number>
-                        </el-form-item>
-                    </td>
-                </tr>
-                <tr>
-                    <td>项目描述</td>
-                    <td>准确定义所提供的产品、技术、概念产品，针对解决的问题，如何满足市场需求，项目所具有的独创性、领先型。</td>
-                    <td>10</td>
-                    <td>
-                        <el-form-item prop="s3"
-                                      error="<?= ActiveElementForm::getFieldError($model,"s3")?>">
-                            <el-input-number v-model="data.s3" :min="1" :max="10"></el-input-number>
-                        </el-form-item>
-                    </td>
-                </tr>
-                <tr>
-                    <td>方案可行性</td>
-                    <td>业务主旨、资金筹备方案合理性、管理背景和能力产品、服务、技术含量和创新型</td>
-                    <td>15</td>
-                    <td>
-                        <el-form-item prop="s4"
-                                      error="<?= ActiveElementForm::getFieldError($model,"s4")?>">
-                            <el-input-number v-model="data.s4" :min="2" :max="15"></el-input-number>
-                        </el-form-item>
-                    </td>
-                </tr>
-            </tbody>
-            <tbody>
+            <tr>
+                <td rowspan="4">方案描述及可行性（45分）</td>
+                <td>价值贡献</td>
+                <td>对公司主营业务的是否有贡献价值，或对公司数字化转型能够提供支持</td>
+                <td>10</td>
+                <td>
+                    <el-form-item prop="s1"
+                                  error="<?= ActiveElementForm::getFieldError($model,"s1")?>">
+                        <el-input-number v-model="data.s1" :min="0" :max="10"></el-input-number>
+                    </el-form-item>
+                </td>
+            </tr>
+            <tr>
+                <td>技术描述</td>
+                <td>技术是否成熟、新颖，描述是否条理清晰，“数字化”技术应用情况</td>
+                <td>10</td>
+                <td>
+                    <el-form-item prop="s2"
+                                  error="<?= ActiveElementForm::getFieldError($model,"s2")?>">
+                        <el-input-number v-model="data.s2" :min="0" :max="10"></el-input-number>
+                    </el-form-item>
+                </td>
+            </tr>
+            <tr>
+                <td>项目描述</td>
+                <td>准确定义所提供的产品、技术、概念产品，针对解决的问题，如何满足市场需求，项目所具有的独创性、领先型。</td>
+                <td>10</td>
+                <td>
+                    <el-form-item prop="s3"
+                                  error="<?= ActiveElementForm::getFieldError($model,"s3")?>">
+                        <el-input-number v-model="data.s3" :min="0" :max="10"></el-input-number>
+                    </el-form-item>
+                </td>
+            </tr>
+            <tr>
+                <td>方案可行性</td>
+                <td>业务主旨、资金筹备方案合理性、管理背景和能力产品、服务、技术含量和创新型</td>
+                <td>15</td>
+                <td>
+                    <el-form-item prop="s4"
+                                  error="<?= ActiveElementForm::getFieldError($model,"s4")?>">
+                        <el-input-number v-model="data.s4" :min="0" :max="15"></el-input-number>
+                    </el-form-item>
+                </td>
+            </tr>
             <tr>
                 <td rowspan="3">市场前景及效益（30分）</td>
                 <td>行业规模</td>
@@ -87,7 +89,7 @@ vuelte\lib\Import::value($this, $model, "data");
                 <td>
                     <el-form-item prop="s5"
                                   error="<?= ActiveElementForm::getFieldError($model,"s5")?>">
-                        <el-input-number v-model="data.s5" :min="1" :max="10"></el-input-number>
+                        <el-input-number v-model="data.s5" :min="0" :max="10"></el-input-number>
                     </el-form-item>
                 </td>
             </tr>
@@ -98,7 +100,7 @@ vuelte\lib\Import::value($this, $model, "data");
                 <td>
                     <el-form-item prop="s6"
                                   error="<?= ActiveElementForm::getFieldError($model,"s6")?>">
-                        <el-input-number v-model="data.s6" :min="1" :max="10"></el-input-number>
+                        <el-input-number v-model="data.s6" :min="0" :max="10"></el-input-number>
                     </el-form-item>
                 </td>
             </tr>
@@ -109,12 +111,10 @@ vuelte\lib\Import::value($this, $model, "data");
                 <td>
                     <el-form-item prop="s7"
                                   error="<?= ActiveElementForm::getFieldError($model,"s7")?>">
-                        <el-input-number v-model="data.s7" :min="1" :max="10"></el-input-number>
+                        <el-input-number v-model="data.s7" :min="0" :max="10"></el-input-number>
                     </el-form-item>
                 </td>
             </tr>
-            </tbody>
-            <tbody>
             <tr>
                 <td rowspan="3">现场展示（25分）</td>
                 <td>协同能力</td>
@@ -123,7 +123,7 @@ vuelte\lib\Import::value($this, $model, "data");
                 <td>
                     <el-form-item prop="s8"
                                   error="<?= ActiveElementForm::getFieldError($model,"s8")?>">
-                        <el-input-number v-model="data.s8" :min="1" :max="8"></el-input-number>
+                        <el-input-number v-model="data.s8" :min="0" :max="8"></el-input-number>
                     </el-form-item>
                 </td>
             </tr>
@@ -134,7 +134,7 @@ vuelte\lib\Import::value($this, $model, "data");
                 <td>
                     <el-form-item prop="s9"
                                   error="<?= ActiveElementForm::getFieldError($model,"s9")?>">
-                        <el-input-number v-model="data.s9" :min="1" :max="8"></el-input-number>
+                        <el-input-number v-model="data.s9" :min="0" :max="8"></el-input-number>
                     </el-form-item>
                 </td>
             </tr>
@@ -145,20 +145,14 @@ vuelte\lib\Import::value($this, $model, "data");
                 <td>
                     <el-form-item prop="s10"
                                   error="<?= ActiveElementForm::getFieldError($model,"s10")?>">
-                        <el-input-number v-model="data.s10" :min="1" :max="9"></el-input-number>
+                        <el-input-number v-model="data.s10" :min="0" :max="9"></el-input-number>
                     </el-form-item>
                 </td>
             </tr>
-            </tbody>
-            <tbody>
             <tr>
-                <td colspan="1">投资金额</td>
-                <td colspan="3">剩余资金: <?=Yii::$app->user->identity->fund?></td>
+                <td colspan="4">项目总分</td>
                 <td colspan="1">
-                    <el-form-item prop="fund"
-                                  error="<?= ActiveElementForm::getFieldError($model,"fund")?>">
-                        <el-input-number v-model="data.fund" :min="0"></el-input-number>
-                    </el-form-item>
+                    {{data.s1+data.s2+data.s3+data.s4+data.s5+data.s6+data.s7+data.s8+data.s9+data.s10}}
                 </td>
             </tr>
             </tbody>

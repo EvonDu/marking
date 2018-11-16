@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use common\lib\Upload;
+use common\models\score\ScoreInvest;
 use common\models\score\ScoreSubmit;
 use Yii;
 use yii\web\Controller;
@@ -38,7 +39,7 @@ class RankingController extends Controller
     }
 
     public function actionFund(){
-        $list = ScoreSubmit::rankFund();
+        $list = ScoreInvest::rankSum();
         return $this->render('fund',[
             'list'=>$list
         ]);
