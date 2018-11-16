@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2018-11-12 18:48:57
+-- Generation Time: 2018-11-16 02:54:13
 -- 服务器版本： 5.7.14
 -- PHP Version: 7.0.10
 
@@ -71,6 +71,14 @@ CREATE TABLE `auth_assignment` (
   `created_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- 转存表中的数据 `auth_assignment`
+--
+
+INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
+('5bee193e12136', '1', 1542332392),
+('5bee1949a78b0', '2', 1542332448);
+
 -- --------------------------------------------------------
 
 --
@@ -86,6 +94,14 @@ CREATE TABLE `auth_item` (
   `created_at` int(11) DEFAULT NULL,
   `updated_at` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 转存表中的数据 `auth_item`
+--
+
+INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `created_at`, `updated_at`) VALUES
+('5bee193e12136', 1, '评委组', NULL, NULL, 1542330695, NULL),
+('5bee1949a78b0', 1, '投资组', NULL, NULL, 1542330702, NULL);
 
 -- --------------------------------------------------------
 
@@ -131,8 +147,8 @@ CREATE TABLE `material` (
 --
 
 INSERT INTO `material` (`id`, `num`, `name`, `pdf`, `ppt`, `swf`) VALUES
-(1, '123', '测试队伍1', '20181111/5be714c8497e5.pdf', NULL, NULL),
-(2, '队伍2', NULL, NULL, NULL, NULL);
+(1, 'TEST001', NULL, NULL, NULL, NULL),
+(2, 'TEST002', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -155,6 +171,26 @@ INSERT INTO `migration` (`version`, `apply_time`) VALUES
 ('m180424_005201_admin', 1541681567),
 ('m180424_005747_rbac', 1541681570),
 ('m180424_012504_userinfo', 1541681570);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `score_invest`
+--
+
+CREATE TABLE `score_invest` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `num` varchar(50) NOT NULL,
+  `fund` double DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- 转存表中的数据 `score_invest`
+--
+
+INSERT INTO `score_invest` (`id`, `user_id`, `num`, `fund`) VALUES
+(4, 2, 'TEST001', 100);
 
 -- --------------------------------------------------------
 
@@ -195,7 +231,6 @@ CREATE TABLE `score_submit` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `num` varchar(50) NOT NULL,
-  `fund` int(11) DEFAULT '0',
   `s1` int(11) DEFAULT '0',
   `s2` int(11) DEFAULT '0',
   `s3` int(11) DEFAULT '0',
@@ -212,10 +247,8 @@ CREATE TABLE `score_submit` (
 -- 转存表中的数据 `score_submit`
 --
 
-INSERT INTO `score_submit` (`id`, `user_id`, `num`, `fund`, `s1`, `s2`, `s3`, `s4`, `s5`, `s6`, `s7`, `s8`, `s9`, `s10`) VALUES
-(12, 2, '123', 21, 10, 10, 10, 15, 10, 10, 10, 8, 8, 9),
-(13, 2, '队伍2', 49, 10, 10, 10, 15, 10, 10, 10, 8, 8, 9),
-(14, 3, '123', 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+INSERT INTO `score_submit` (`id`, `user_id`, `num`, `s1`, `s2`, `s3`, `s4`, `s5`, `s6`, `s7`, `s8`, `s9`, `s10`) VALUES
+(3, 1, 'TEST001', 10, 9, 9, 14, 10, 10, 10, 8, 8, 9);
 
 -- --------------------------------------------------------
 
@@ -233,7 +266,7 @@ CREATE TABLE `user` (
   `status` smallint(6) NOT NULL DEFAULT '10',
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL,
-  `fund` int(11) DEFAULT '0'
+  `fund` double DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -241,9 +274,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`, `fund`) VALUES
-(1, 'user', 'J116BH1pO5kGB7Vl596zgs3gnxxVnRDc', '$2y$13$kXqATUSyFpW6l71L.u57MeKZEuEInyRdK1aOuuYkpOc77a.pAkYfy', NULL, 'user@test.com', 10, 1541681567, 1542038783, 10000),
-(2, 'user2', '7kJdxq5aTdU7vMB3pB5ioHv3Q80oBzIv', '$2y$13$FqzYaiHm9CdyclV/9Rnmp.MU1p6MlZ0ByFGaWgK4AzdQnl0w2/FJW', NULL, 'user2@test.com', 10, 1541869848, 1542047336, 9825),
-(3, 'test3', 'ouqHdnJTaLMvxsYpcLkwJSdups1XrS-i', '$2y$13$RKJxHpyjiN8i3QtF71RhF.Fr.qzquym9P/AY0O5a67cfybSIr2OFO', NULL, 'test@test.com', 10, 1542040630, 1542040630, 1000);
+(1, 'test1', 'cr3CqXRdmiv97cr3nB0wY1PlZm0pS0Vp', '$2y$13$9B6/br6t7RHib7jSwCjSp.Qym2BCOG6a5GVgL11.3/IbWN/K.sNfi', NULL, 'test1@test.com', 10, 1542332392, 1542332392, 1000),
+(2, 'test2', '_5YbiJfJCkenPCWkfET_s5cfoL5DUy0O', '$2y$13$R/bIb7CBxb.aN0e8IneYZOUH.xImCmu7Fo23Y1qH33emKvT9O.uJ.', NULL, 'test2@test.com', 10, 1542332448, 1542336094, 900);
 
 -- --------------------------------------------------------
 
@@ -319,6 +351,12 @@ ALTER TABLE `migration`
   ADD PRIMARY KEY (`version`);
 
 --
+-- Indexes for table `score_invest`
+--
+ALTER TABLE `score_invest`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `score_item`
 --
 ALTER TABLE `score_item`
@@ -365,7 +403,12 @@ ALTER TABLE `admin_info`
 -- 使用表AUTO_INCREMENT `material`
 --
 ALTER TABLE `material`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- 使用表AUTO_INCREMENT `score_invest`
+--
+ALTER TABLE `score_invest`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- 使用表AUTO_INCREMENT `score_item`
 --
@@ -375,12 +418,12 @@ ALTER TABLE `score_item`
 -- 使用表AUTO_INCREMENT `score_submit`
 --
 ALTER TABLE `score_submit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- 使用表AUTO_INCREMENT `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- 使用表AUTO_INCREMENT `user_info`
 --
