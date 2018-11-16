@@ -42,8 +42,6 @@ vuelte\lib\Import::value($this, $model, "data");
 
                 <?= $form->field($model, 'username')->el_input(['v-model' => 'data.username', 'type' => 'input']) ?>
 
-                <?= $form->field($model, 'email')->el_input(['v-model' => 'data.email', 'type' => 'input']) ?>
-
                 <?= $form->field($model, 'password')->el_input(['v-model' => 'data.password', 'type' => 'password']) ?>
 
                 <?= $form->field($model, 'fund')->el_input(['v-model' => 'data.fund', 'type' => 'input']) ?>

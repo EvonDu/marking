@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2018-11-16 02:54:13
+-- Generation Time: 2018-11-16 08:56:56
 -- 服务器版本： 5.7.14
 -- PHP Version: 7.0.10
 
@@ -77,6 +77,10 @@ CREATE TABLE `auth_assignment` (
 
 INSERT INTO `auth_assignment` (`item_name`, `user_id`, `created_at`) VALUES
 ('5bee193e12136', '1', 1542332392),
+('5bee193e12136', '3', 1542347095),
+('5bee193e12136', '4', 1542357264),
+('5bee193e12136', '5', 1542357276),
+('5bee193e12136', '6', 1542358574),
 ('5bee1949a78b0', '2', 1542332448);
 
 -- --------------------------------------------------------
@@ -262,7 +266,7 @@ CREATE TABLE `user` (
   `auth_key` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
   `password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password_reset_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` smallint(6) NOT NULL DEFAULT '10',
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL,
@@ -375,7 +379,6 @@ ALTER TABLE `score_submit`
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `password_reset_token` (`password_reset_token`);
 
 --
