@@ -65,8 +65,16 @@ vuelte\lib\Import::value($this, $model, "data");
         },
         methods:{
             submit:function(event){
-                YiiFormSubmit(this.data,"<?= $model->formName()?>");
-            },
+                this.$confirm('是否确认进行资金投资?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning',
+                }).then(function(){
+                    YiiFormSubmit(this.data,"<?= $model->formName()?>");
+                }).catch(function(){
+                    return;
+                });
+            }
         }
     })
 </script>
